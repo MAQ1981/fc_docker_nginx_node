@@ -10,11 +10,12 @@ const config = {
 const mysql = require('mysql')
 const connection = mysql.createConnection(config)
 
-const sql = `INSERT INTO people(name) values('FC_DOCKER_NODE')`
-connection.query(sql)
+const sql = `insert into people(name) values ?`
+const peoples = [['Marcelo'], ['Quinalha'], ['MAQ']]
+connection.query(sql, [peoples])
 
-//const sql = `SELECT * FROM PEOPLE ORDER BY 1 ASC`
-//connection.query(sql)
+const sqlSelect = `SELECT * FROM people ORDER BY 1 ASC`
+connection.query(sqlSelect)
 
 connection.end()
 
